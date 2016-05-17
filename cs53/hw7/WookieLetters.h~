@@ -1,0 +1,120 @@
+//Programmer: Sean Basler    Section: b
+//File: WookieLetters.h
+//Description: This declares the global constants and functions used in
+//             the WookieLetters program
+
+#ifndef WOOKIELETTERS_H
+#define WOOKIELETTERS_H
+
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+//Global constants
+const int WOOKIE_MAX = 8, LETTER_MAX = 10;//Array limits
+
+//Structs
+struct Wookie
+{
+  string m_name;
+  float m_height;
+  float m_weight;      
+};
+      
+
+//Function Declarations
+
+//Description: Gives the user a greeting
+//        Pre: none
+//       Post: Outputs a greeting
+void greeting();
+
+//Description: Gives the user a farewell
+//        Pre: none
+//       Post: Outputs a farewell statement
+void signoff();
+
+//Description: prompts for and creates random wookies
+//        Pre: none
+//       Post: creates a random wookie  
+void init_array(Wookie wookArr[]); 
+
+//Description: makes the letters in the array random  
+//        Pre: none
+//       Post: creates a random list of letters
+void init_array(char letterArr[]);
+ 
+//operator overloads declarations
+
+//Description: makes the output for Wookies 
+//        Pre: none
+//       Post: Outputs a Wookie
+ostream& operator <<(ostream & os, const Wookie & w);
+
+//Description: Compares the size of two Wookies
+//        Pre: none
+//       Post: Compares two Wookies 
+bool operator <(const Wookie & wook1, const Wookie &  wook2);
+
+//Templates
+
+//Description: This determines the smallest item in an array
+//        Pre: Must have < operator defined
+//       Post: It returns the minimum value
+template <typename T>
+short smallestIndex(const T array[], const short begin, const short end)
+{
+  short index;
+  T min = array[begin];
+  short indexOfMin = begin;
+  for(index = (begin + 1); index < end; index++)
+  {
+    if (array[index] < min)
+    {
+      min = array[index];
+      indexOfMin = index; 
+    }
+  }
+  return indexOfMin;
+} 
+
+//Description: This swaps the values of any type
+//        Pre: None
+//       Post: It swaps the values
+template <typename T>
+void swapVal(T & val1, T & val2)
+{
+  T temp = val1;
+  val1 = val2;
+  val2 = temp;
+  return; 
+}
+
+//Description: This sorts an array of any type
+//        Pre: The < operator must be defined
+//       Post: Sorts the array into the desired order
+template <typename T>
+void sortArray(T array[], const short arraySize )
+{  
+  short nextSmall, index;
+  for(index = 0; index < (arraySize-1); index ++)
+  {
+    nextSmall = smallestIndex (array, index, arraySize);
+    swap(array[index], array[nextSmall]); 	
+  }
+  return; 
+}
+
+//Description: This outputs an array to the user 
+//        Pre: The insertion operator must be defined
+//       Post: Outputs the array
+template <typename T>
+void sayArray(const T array[], const short arraySize)
+{
+  for (int i = 0; i < arraySize; i++)
+    cout<<array[i]; 
+  return; 
+}
+
+#endif

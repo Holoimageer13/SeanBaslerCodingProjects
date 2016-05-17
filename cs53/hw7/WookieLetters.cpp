@@ -1,0 +1,43 @@
+//Programmer: Sean Basler    Section: b
+//File: WookieLetters.cpp
+//Description: This program organizes Ralph's Wookies and Letters
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include "WookieLetters.h"
+using namespace std;
+
+int main()
+{
+  srand(time(NULL));
+  
+  //Array declarations
+  Wookie wookArr[WOOKIE_MAX];
+  char letterArr[LETTER_MAX];
+  
+  //Function calls
+  
+  //Greeting function
+  greeting();
+  
+  //Creates arrays
+  init_array(wookArr);
+  init_array(letterArr);
+  cout<<endl;
+  //Sorts arrays
+  sortArray(wookArr, WOOKIE_MAX);
+  sortArray(letterArr, LETTER_MAX);
+  
+  //Displays arrays
+  cout<<"Ralph's Wookies: "<<endl;
+  sayArray(wookArr, WOOKIE_MAX);
+  cout<<endl;
+  cout<<"Ralph's Letters: "<<endl;
+  sayArray(letterArr, LETTER_MAX);
+  cout<<endl;
+  
+  //Goodbye
+  signoff();
+  
+  return 0;
+}

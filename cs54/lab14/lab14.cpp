@@ -1,0 +1,209 @@
+//-----------------------------------------------------------------------
+// Programmer: Sean Basler           Student ID: 12366509 
+// Lab: 14, "Template class"         Filename: Lab14.cpp
+// Due Date: 04/29/14                Class: CSc54, Section C
+//------------------------------------------------------------------------
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+//Global Constants
+const int MAX = 15;
+
+//Template Class
+
+//Desc: Constructor that defaults the number of grades to zero
+// Pre: none
+//Post: Creates a gradeRoaster with zero grades
+//Desc: Returns whether or not another grade can be stores and stores it 
+// Pre: Must not enter negative numbers
+//Post: Creates grades for a member of the class gradeRoaster
+//Desc: Prints off the number of grades and then every grade
+// Pre: none
+//Post: Outputs the number of grades and then every grade
+//Desc: Turns an old grade into a higher grade
+// Pre: none
+//Post: returns the number of grades changed
+template <class T_element>
+class gradeRoaster
+{
+  private:
+    int m_numGrades;
+    T_element m_grades[MAX];
+  public:
+    gradeRoaster(): m_numGrades(0){}
+    bool enterGrade(T_element grade);
+    void printGrades();
+    int upgradeGrade(T_element oldGrade, T_element newGrade);
+};
+
+//Global function declarations
+
+//Desc: Returns a random number between 1 and 100
+// Pre: none
+//Post: Returns a random number between 1 and 100
+int generateGrade();
+
+//Desc: Returns a random character A,B,C, or F
+// Pre: none
+//Post: Returns a random character A,B,C, or F
+char generateCharGrade();
+
+//Main Driver
+int main()
+{ 
+  //clock declaration
+  srand(time(NULL));
+  
+  //class construction
+  gradeRoaster<int> roaster_score;
+  gradeRoaster<char> roaster_letter;
+  
+  //local variables
+  int numUpgrades, numOfGrades;
+  
+  //greeting
+  cout<<"grade Roaster Information..."<<endl<<endl;
+  
+  //number of grades prompt
+  cout<<"How many grades do you have? ";
+  cin>>numOfGrades;
+  
+  //generates number grades
+  for (int i = 0; i < numOfGrades; i++)
+  {
+    roaster_score.enterGrade(generateGrade());
+  }
+  roaster_score.printGrades();
+  
+  //upgrades and returns the amount updated
+  numUpgrades = roaster_score.upgradeGrade(49,50);
+  cout<<endl;
+  if (numUpgrades == 0)
+    cout<<"No grades were updated"<<endl;
+  else
+  { 
+    cout<<numUpgrades<<" upgrades were made"<<endl;
+    cout<<"New grade roaster: ";
+    roaster_score.printGrades();
+  }
+  cout<<endl;
+    
+  //Second prompt
+  cout<<"How many grades do you have? ";
+  cin>>numOfGrades;
+      
+  //generates number grades
+  for (int i = 0; i < numOfGrades; i++)
+  {
+    roaster_letter.enterGrade(generateCharGrade());
+  }
+  roaster_letter.printGrades();
+                    
+  //upgrades and returns the amount updated
+  numUpgrades = roaster_letter.upgradeGrade('C','B');
+  cout<<endl;
+  if (numUpgrades == 0)
+    cout<<"No grades were updated"<<endl;
+  else
+  {
+    cout<<numUpgrades<<" upgrades were made"<<endl;
+    cout<<"New grade roaster: ";
+    roaster_letter.printGrades();
+  }                                              
+  return 0;
+}
+
+//class functions
+template <class T_element>
+bool gradeRoaster <T_element>::enterGrade(T_element grade)
+{
+  //local variables
+  bool madeGrades = false;
+  
+  //tests for the amount being under the max
+  if (m_numGrades < MAX)
+  {
+    m_grades[m_numGrades] = grade;
+    m_numGrades++;
+    madeGrades = true;  
+  }
+  
+  //returns the value
+  return madeGrades;  
+}
+
+template <class T_element>
+void gradeRoaster <T_element>::printGrades()
+{
+  //prints total grades
+  cout<<"Total grades: "<<m_numGrades<<endl;
+  
+  //prints out all the grades
+  for (int i = 0; i < m_numGrades; i++)
+  {
+    cout<<m_grades[i]<<" ";
+  }
+  cout<<endl;
+  return;
+}
+
+template <class T_element>
+int gradeRoaster <T_element>::upgradeGrade(T_element oldGrade, T_element newGrade)
+{
+  //local variable
+  int numChanged = 0;
+  
+  //changes the grades in the Roaster
+  cout<<"upgrading "<<oldGrade<<" to "<<newGrade;
+  for (int i = 0; i < m_numGrades; i++)
+  {
+    if (m_grades[i] == oldGrade)//checks to see if the grade is there
+    {
+      m_grades[i] = newGrade;
+      numChanged++;
+    }
+  } 
+  return numChanged; 
+}
+
+//Global functions
+int generateGrade()
+{
+  //local constants
+  const int MAXGRADE = 100;
+  
+  //local variables
+  int randnum;
+  
+  //randomization
+  randnum = (rand()%MAXGRADE+1);
+  
+  return randnum;
+}
+
+char generateCharGrade()
+{ 
+  //local constants
+  int RANDCHOICE = 4;//decides which case to execute;
+  
+  //local variables
+  int randnum;
+  char randGrade;
+  
+  //randomization 
+  randnum = rand()%RANDCHOICE;
+  
+  //Chooses which letter for the grade to return
+  if (randnum == 0)
+    randGrade = 'A';
+  else if (randnum == 1)
+    randGrade = 'B';
+  else if (randnum == 2)
+    randGrade = 'C';
+  else 
+    randGrade = 'F';
+  
+  return randGrade;  
+}

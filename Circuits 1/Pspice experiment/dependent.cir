@@ -1,0 +1,11 @@
+Name: Sean Basler  Problem:4  Experiment: 3 ;Title
+Is 1 0 DC 0 		;the independent current source
+.STEP Is 2 0 0.5	;command tests Is for values from 0 to 2 in increments of 0.5
+VD1 1 4 DC 0		;ib finder, dummy voltage source
+VD2 2 3 DC 0		;iy finder, dummy voltage source
+F1 2 0 VD1 97		;dependent current source for ib
+R1 4 0 1k			;1kohm resistor with ib
+R2 3 0 1k			;1kohm resistor with iy
+R3 1 2 1k			;1kohm resistor
+.OP
+.End

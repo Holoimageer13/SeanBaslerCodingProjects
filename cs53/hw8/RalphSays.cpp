@@ -1,0 +1,104 @@
+// Programmer: Sean Basler    Date:04/09/14
+// File: RalphSays.cpp        Class Section: b
+// Purpose: This file takes questions and gives Ralphisms as answers
+#include "RalphSays.h"
+#include <string>
+#include <cstring>
+#include <cstdlib>
+#include <ctime>
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  //Sets randomization
+  srand(time(NULL));
+  
+  //Declares local variables
+  char question[MAXINPUT], repeat;//main loop manipulation
+  char longwd[MAXINPUT], firstn[MAXDATA], secondn[MAXDATA];
+  char theVerb[MAXDATA], thirdn[MAXDATA], aRalphism[MAXPHRASE];
+  int randnum;//chance calculator
+  int noun1Size, noun2Size, noun3Size, verbSize, ralphismsSize;
+  bool isNoun = true;  
+
+  //Opens data files
+  ifstream noun1("noun1.dat");
+  ifstream noun2("noun2.dat");
+  ifstream noun3("noun3.dat");
+  ifstream verb("verb.dat");
+  ifstream ralphisms("ralphisms.dat");
+  
+  //Gets file Sizes
+  noun1Size = datasize(noun1);
+  noun2Size = datasize(noun2);
+  noun3Size = numlines(noun3);
+  verbSize = datasize(verb);
+  ralphismsSize = numlines(ralphisms);
+  
+  noun1.open("noun1.dat");
+  noun2.open("noun2.dat");
+  noun3.open("noun3.dat");
+  verb.open("verb.dat");
+  ralphisms.open("ralphisms.dat");
+  
+  //function calls
+  greet();
+  do
+  {
+    ask(question);
+    randnum = chance();
+    if (randnum <= OPTONE)//option1 selected
+    {
+      isNoun = true;
+      
+      //Sets all the words equal to one of the values
+      anyword(firstn, noun1, noun1Size);
+      anyword(secondn, noun2, noun2Size);
+      anyphrase(thirdn, noun3, noun3Size, isNoun);
+      anyword(theVerb, verb, verbSize);
+      
+      //finds the longest word in the question
+      longword(longwd, question);
+	  
+      //Chance for long word navigation
+      randnum = chance();
+      if (randnum <= LONGUSE)//longestword used
+      {
+        randnum = chance();
+        if (randnum <= NOUN2USE)//longest word is noun 2
+        {
+          strcpy(secondn, longwd);
+        }
+        else//longest word is noun 3
+        {
+          strcpy(thirdn, longwd);
+        }
+      }
+      cout<<"My "<<firstn<<"'s "<<secondn<<" "<<theVerb<<" like "<<thirdn;
+      cout<<"."<<endl<<endl;
+      noun1.open("noun1.dat");
+      noun2.open("noun2.dat");
+      noun3.open("noun3.dat");
+      verb.open("verb.dat");
+    }
+    else//option two is selected
+    { 
+      isNoun = false;
+      anyphrase(aRalphism, ralphisms, ralphismsSize, isNoun);
+      cout<<aRalphism<<endl<<endl;
+      ralphisms.open("ralphisms.dat");
+    }
+    repeat = again();
+  } while(repeat == 'y' || repeat == 'Y');
+  bye();
+  
+  //closes data files
+  noun1.close();
+  noun2.close();
+  noun3.close();
+  verb.close();
+  ralphisms.close();
+  return 0;
+}

@@ -1,0 +1,109 @@
+//Programmer: Sean Basler    Section: C
+//File: lab8Main.cpp
+//Description: This file defines the functions used in the Perimeter 
+//             measurement program
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include "lab8.h"
+using namespace std;
+
+int generateRandomNum()
+{
+  //Declares local variables
+  int randomNum;
+  
+  //Calculates a random number between the upper bound and the lower bound
+  randomNum = (rand()% 3) + 1;
+  
+  //Tells user what number was used
+  cout<<"The generated Random number was: "<<randomNum<<endl;
+  return randomNum; 
+}
+
+float findPerimeter (const float radius)
+{
+  //declares variables
+  float peri;
+  
+  //calculates perimeter 
+  peri = 2*PI*radius;
+  
+  return peri;
+}
+
+float findPerimeter (const float length1, const float length2, 
+                     const float length3)
+{
+  //declares variables
+  float peri;
+  
+  //calculates perimeter
+  peri = length1 + length2 + length3;
+  
+  return peri;
+}
+
+void greeting ()
+{
+  cout<<endl<<"Welcome! "<<endl<< endl;
+  cout<<"In this program we will be finding the area of a CIRCLE or "<< endl;
+  cout<<"RECTANGLE or TRAINGLE, "<<endl; 
+  cout<<"depending on the random number generated"<<endl<<endl;
+                  
+  return;
+}
+                    
+float readInput ()
+{
+  //declared variables
+  float length;
+  
+  //prompt    
+  cout<<"\tEnter a number :";
+  cin>>length;
+                          
+  return length;
+}
+                            
+float findPerimeter (const float width, const float length)
+{
+  //declares variables
+  float peri;
+  
+  //calculates perimeter
+  peri = 2* (width + length);
+                                 
+  return peri;
+}
+                                                                   
+void printResult(const int shape, const float perim)
+{
+  cout << endl;
+  switch (shape)
+  {
+    case CIRCLE: 
+      cout<<"The perimeter of the circle is: "<<perim<<endl;
+      break;
+                                                                
+    case RECTANGLE:
+      cout<<"The perimeter of the rectangle is: "<<perim<<endl;
+      break;
+                                                                                
+    case TRIANGLE:
+      cout<<"The perimeter of the triangle is: "<< perim << endl;
+      break;
+                                                                           
+    default: 
+      cout<<"Cannot Identify the shape."<<endl;
+      break;
+  }  
+  return;
+}
+
+void signoff()
+{
+  cout<<"Thank you for using the program!"<<endl;
+  cout<<"Have a good day!"<<endl;
+  return;
+}

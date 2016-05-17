@@ -1,0 +1,70 @@
+//Programmer: Sean Basler    Section: C
+//File: lab8.h
+//Description: This file declares all the functions and global 
+//             variables involved in the perimeter measurement program
+#ifndef LAB8_H
+#define LAB8_H
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+//Global Constants
+const int CIRCLE = 1;
+const int RECTANGLE = 2;
+const int TRIANGLE = 3;
+const float PI = 3.14;//Constant used in circle calculation
+
+//Desc: Greeting message is output to the screen
+//Pre : None
+//Post: Greeting message is output to the screen
+void greeting ();
+
+//Desc: Generates a random number between 1 and 3, inclusively and 
+//    : return it back to the calling function
+//Pre : None
+//Post: a number between 1 and 3, inclusively, is returned back to 
+//      the calling function
+int generateRandomNum();
+
+//Desc: Reads a positive number from user and returns it back to 
+//    : the calling function
+//Pre : None
+//Post: a positive number is returned back to the calling function
+float readInput ();
+
+//Desc: Finds the perimeter of the circle, whose radius is passed in to the
+//    : function
+//Pre : radius is a positive number
+//Post: a positive number, the perimeter, 
+//    : is return back to the calling function
+float findPerimeter (const float radius);
+
+//Desc: Finds the perimeter of the rectangle/square, whose sides are passed in 
+//    : to the function
+//Pre : width and length are positive numbers
+//Post: a positive number, the perimeter,
+//    : is returned back to the calling function
+float findPerimeter (const float width, const float length);
+
+//Desc: Finds the perimeter of the triangle, whose sides are passed into the 
+//    : function
+//Pre : three sides are positive numbers and three lengths form a triangle
+//Post: a positive number, the perimeter, 
+//    : is return back to the calling function
+float findPerimeter (const float length1, const float length2, 
+                     const float length3);
+
+//Desc: the shape and its perimeter are output on the screen; if the shape is
+//    : not valid gives a message
+//Pre : none
+//Post: the shape and its perimeter are output on the screen;
+//    : if the shape does not represents a valid shape, a message is output
+void printResult(const int shape, const float perim );
+
+//Desc: A signoff message is output on the screen
+//Pre : None
+//Post: A signoff message is output on the screen
+void signoff();
+      
+#endif

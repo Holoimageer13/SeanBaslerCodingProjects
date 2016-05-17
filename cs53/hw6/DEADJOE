@@ -1,0 +1,236 @@
+
+*** These modified files were found in JOE when it aborted on Thu Mar  6 13:29:33 2014
+*** JOE was aborted because the terminal closed
+
+*** File 'ralphMathSys_functions.cpp'
+//Programmer: Sean Basler    Section: b
+//File: ralphMathSys.cpp
+//Description: This program defines the functions used in ralphMathSys
+#include <iostream>
+#include "ralphMathSys.h"
+using namespace std;
+
+void hello()
+{
+  cout<<"Welcome to the Ralph Wiggum MathCOM Network v. 2.0"<<endl;
+  cout<<"How may we help you today?"<<endl;
+  return;
+}
+
+void bye()
+{
+  cout<<"Thank you for using our expert services."<<endl;
+  cout<<"Have a good day!"cout<<endl;
+  return;
+}
+
+void menu()
+{
+  //Local variable declarations
+  float numCalc, rootCalc, exponentCalc;//these are the user's inputs
+  int menuChoice, loopCounter = 0;//these select the functions to be used 
+  bool isX = false;
+  
+  //Loop of the main program
+  do 
+  {
+    //Menu prompt
+    cout<<"\tMENU"<<endl;
+    cout<<"1. Enter a positive real number, x"<<endl;
+    cout<<"2. Factorial (of integer part of x)"<<endl;
+    cout<<"3. Nth root of x"<<endl;
+    cout<<"4. Power of x, x^n"<<endl;
+    cout<<"5. Exp(x)"<<endl;
+    cout<<"6. sinh(x) (hyperbolic sine)"<<endl;
+    cout<<"7. Quit"<<endl<<endl;
+    cout<<"\t\tEnter Selection: ";
+    cin>>menuChoice;
+    cout<<endl<<endl;
+    
+    //makes sure the user enters a x value the first time through
+    menuChoice = menuCheck(menuChoice,loopCounter);    
+    switch (menuChoice)
+    {
+      case 1:
+      {
+        isX = true; 
+        numCalc = valSet(isX);
+        break;
+      }
+      case 2:
+      {
+        factorial(numCalc);
+        break;
+      }
+      case 3:
+      {
+        rootCalc = valSet(isX);
+        nRoot(numCalc, rootCalc);
+        break;
+      }
+      case 4:
+      { 
+        exponentCalc = valSet(isX);
+        xPow(numCalc, exponentCalc);
+        break
+      }
+      case 5:
+      {
+        expX(numCalc);
+        break;
+      }
+      case 6:
+      {
+        sinH(numCalc);
+        break;
+      }
+      case: 7:
+      {
+        break;
+      }
+      default:
+      {
+        error();
+      }   
+    }
+    loopCounter++;
+  } while(menuChoice != 7);
+  return;
+}
+
+int menuCheck(int menuOption, int loopCount);
+{
+  while(menuOption != 1 && loopCount == 0)
+  {
+    cout<<"Error, you have to enter an x to be used in calculation!"<<endl;
+    cout<<"Please enter 1: ";
+    cin>>menuChoice;  
+  }
+  return menuOption;
+}
+
+float valSet(bool isX)
+{
+  //Declares local variables
+  float numberCalc;
+  
+  //prompt for x
+  cout<<"Enter a positive real number(for ";
+  if (isX == true)
+    cout<<"x): ";
+  else
+    cout<<"n): ";
+  cin>>numberCalc;
+  cout<<endl;
+                          
+  //checks for positive real integer
+  while (numberCalc <= 0)
+  {
+    cout<<"Error, I said enter a POSITIVE REAL NUMBER: ";
+    cin>>numberCalc;
+    cout<<endl;
+  }
+  
+  //tells what value x is set to and returns control to the calling function
+  if (isX == true)
+    cout<<"x";
+  else
+    cout<<"n";
+  cout<<" is set to: "<<numberCalc<<"."<<endl<<endl;                                                                                              
+  return numberCalc;
+}
+
+void factorial(const float numCalc)
+{
+  //Calculates factorial
+  for(int i = 2;i <= static_cast<int>(numCalc);i++)
+  {
+    factCalc = factCalc*i;
+  }
+                                                          
+  //Gives back result
+  cout<<numCalc<<"! is: "<<factCalc;
+  cout<<endl<<endl;
+}
+
+void nRoot(const float numCalc, const float root)
+{
+  //Declares local variables
+  float result, expNum = 1;
+  
+  result = numcalc;//initializes x to be calculated
+  //Calculations
+  for(int i = 1; i <= ROOT_COUNT; i++)
+  {
+    result = ((root-1)*result + numCalc/expNum)/root; 
+    
+    //Loops to make exponent in the denomenator  
+    for (int j = 1; j <= (root - 1); j++)
+    {
+      expNum =  result * expNum; 
+    }
+  }
+}
+
+void xPow(const float numCalc, float exponent)
+{
+}
+
+void expX(const float numCalc)
+{
+}
+
+void sinH(const float numCalc)
+{
+}
+
+void error();
+{
+  cout<<"Error incorrect input"<<endl<<endl;
+  return;
+}
+
+*** File '(Unnamed)'
+ralphMathSys.h
+ralphMathSys.h
+goBanana.cpp
+ralphMath.cpp
+ralphMathSys.h
+ralphMathSys.h
+ralphMathSys.h
+ralphMathSys.h
+ralphMath.cpp
+ralphMathSys_functions.cpp
+ralphMathSys_functions.cpp
+
+*** These modified files were found in JOE when it aborted on Thu Mar  6 13:29:33 2014
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+ralphMathSys.h
+goBanana.cpp
+ralphMath.cpp
+ralphMathSys.h
+ralphMathSys.h
+ralphMathSys.h
+ralphMathSys.h
+ralphMath.cpp
+ralphMathSys_functions.cpp
+ralphMath.cpp
+ralphMathSys.cpp
+
+*** These modified files were found in JOE when it aborted on Thu Mar  6 13:29:33 2014
+*** JOE was aborted by UNIX signal 1
+
+*** File '(Unnamed)'
+go_Banana_functions.cpp
+ralphMathSys.h
+ralphMathSys.h
+goBanana.cpp
+ralphMath.cpp
+ralphMathSys.h
+ralphMathSys.h
+ralphMathSys.h
+ralphMathSys.h
+ralphMath.cpp
+ralphMathSys.h

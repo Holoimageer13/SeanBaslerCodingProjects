@@ -1,0 +1,74 @@
+#Sean Basler Cs 3800
+#!/usr/bin/en bash
+echo "WELCOME \n---------------------------------------------"
+
+while [ 1 ] #keeps process going
+do
+    #menu
+    echo "select a menu option"
+    echo "1- ancestry history"
+    echo "2- who is online"
+    echo "3- what process any user is running"
+    echo "4- exit"
+
+    read option #input from user
+
+    if [ $option -eq 1 ] #choose tree
+    then
+        echo "THE ANCESTRY TREE FOR CURRENT PROCESS IS...."
+        ps -ef > tempFile
+    	cPID=$$ 
+    	while [ $cPID -ne 1 ]
+    	do
+	    cPID=$(awk '{if ('$cPID' == $2) print $3;}' tempFile) 
+	    echo "$cPID"
+	    if [ $cPID -ne 1 ]
+	    then	    
+	        echo " |"
+	    fi
+    	done
+	rm tempFile
+    fi
+
+    if [ $option -eq 2 ] #choose user
+    then
+	who | while read onlineuser
+	do
+	    echo $onlineuser | cut -f1 -d' '>>userlist
+	done
+	awk '{print}' userlist | sort -u
+	rm userlist
+    fi
+
+    if [ $option -eq 3 ] #choose process
+    then
+        index=1
+	who|while read onlineuser
+	do
+	    echo "$onlineuser" | cut -f1 -d' ' >> userlist1
+	done
+	awk '{print}' userlist1 | sort -u >> userlist2
+	rm userlist1
+	while read line
+	do
+	    echo "$index-$line" | cut -f1 -d' ' >> userlist3
+    	    index=$(expr $index + 1)
+	done < userlist2 
+	rm userlist2
+	awk '{print}' userlist3
+	read input
+	grep "$input" userlist3 >> choice
+	rm userlist3
+	sed 's/^..//' choice >> theuser
+	rm choice
+	desuser=$(awk '{print}' theuser)
+	rm theuser
+	ps -ef | grep "$desuser" 
+    fi
+
+    if [ $option -eq 4 ] #exit
+    then
+        exit
+    fi
+
+done

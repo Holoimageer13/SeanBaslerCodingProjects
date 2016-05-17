@@ -1,0 +1,52 @@
+#!/usr/bin/en bash
+echo "WELCOME \n---------------------------------------------"
+
+while [ 1 ] #keeps process going
+do
+    #menu
+    echo "select a menu option"
+    echo "1- ancestry history"
+    echo "2- who is online"
+    echo "3- what process any user is running"
+    echo "4- exit"
+
+    read option #input from user
+
+    if [ $option -eq 1 ] #choose tree
+    then
+        echo "THE ANCESTRY TREE FOR CURRENT PROCESS IS...."
+        ps -ef > tempFile
+    	cPID=$$ 
+    	while [ $cPID -ne 1 ]
+    	do
+	    cPID=$(awk '{if ($cPID == $4) print;}' tempFile | print $5) 
+	    #cPID=$5
+    	done
+    fi
+
+    if [ $option -eq 2 ] #choose user
+    then
+	who | while read onlineuser
+	do
+	    echo $onlineuser | cut -f1 -d' '>>userlist
+	done
+	awk '{print}' userlist | sort -u
+    fi
+
+    if [ $option -eq 3 ] #choose process
+    then
+        index=1
+	who|while read onlineuser
+	do
+	    print `$index-$onlineuser`
+	    echo $index $onlineuser | cut -f1 -d' ' >> userlist1
+	    index=$(expr $index + 1)
+    	done
+    fi
+
+    if [ $option -eq 4 ] #exit
+    then
+        exit
+    fi
+
+done

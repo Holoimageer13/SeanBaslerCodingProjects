@@ -1,0 +1,75 @@
+//Programmer Sean Basler   Section: b
+//File: ralphMathSys.h
+//Description: This Declares the global constants and functions used
+//             in ralphMath.cpp
+
+#ifndef RALPHMATHSYS_H
+#define RALPHMATHSYS_H
+#include <iostream>
+using namespace std;
+
+//Declarations of global constants
+const int ROOT_COUNT = 8, EXP_COUNT = 10, SIN_COUNT  = 5;
+
+//Function Declarations
+
+//Description: Greets the user
+//        Pre: None
+//       Post: Outputs a greeting to the user
+void hello(); 
+
+//Description: Wishes farewell to the user
+//        Pre: None
+//       Post: Outputs a goodbye message
+void bye();
+
+//Description: This is the menu used to prompt the user for input
+//        Pre: None
+//       Post: Outputs the prompt to the user
+void menu();
+
+//Description: This makes sure that the user enters a value for x first
+//        Pre: Must take in a positive integer
+//       Post: Returns a valid value for x
+int  menuCheck(int menuOption, int loopCount);
+
+//Description: Validates and accepts the  user's input
+//        Pre: None
+//       Post: Returns a positive value for x or n  
+float valSet(bool isX);
+
+//Description: Calculates the factorial of x and gives it to the user 
+//        Pre: Takes in a positive real number
+//       Post: Outputs the value of the factorial to the user
+int factorial(const float numCalc);
+
+//Description: Calculates the nth root of x and gives it to the user 
+//        Pre: Takes in two positive real number
+//       Post: Returns the nth root of x
+float nRoot(const float numCalc, const float root);
+
+//Description: Calculates the x to the nth degree and gives it to the user
+//        Pre: Takes in a positive real number
+//       Post: Returns the x to the nth degree
+float xPow(const float numCalc, const float exponent);
+
+//Description: Calculates the exponential of x and gives it to the user
+//        Pre: Takes in a positive real number
+//       Post: Returns the exponential of x
+float expX(const float numCalc);
+
+//Description: Calculates Sinh(x) and gives it to the user
+//        Pre: Takes in a positive real number
+//       Post: Returns the exponential of x
+float sinH(const float numCalc);
+
+//Description: Lets the user know they have put in incorrect input
+//        Pre: None
+//       Post: Outputs error message to the user
+void error();
+
+//Description: Shows the reader the result
+//        Pre: Takes in positive real numbers
+//       Post: Outputs the result to the user
+void result(const float finalResult, const int theCase);
+#endif  

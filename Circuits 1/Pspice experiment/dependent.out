@@ -1,0 +1,308 @@
+
+**** 10/10/14 09:37:32 ******* PSpice Lite (April 2011) ******* ID# 10813 ****
+
+ Name: Sean Basler  Problem:4  Experiment: 3 ;Title
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+Is 1 0 DC 0             ;the independent current source
+.STEP Is 2 0 0.5        ;command tests Is for values from 0 to 2 in increments of 0.5
+VD1 1 4 DC 0            ;ib finder, dummy voltage source
+VD2 2 3 DC 0            ;iy finder, dummy voltage source
+F1 2 0 VD1 97           ;dependent current source for ib
+R1 4 0 1k                       ;1kohm resistor with ib
+R2 3 0 1k                       ;1kohm resistor with iy
+R3 1 2 1k                       ;1kohm resistor
+.OP
+.End
+
+**** 10/10/14 09:37:32 ******* PSpice Lite (April 2011) ******* ID# 10813 ****
+
+ Name: Sean Basler  Problem:4  Experiment: 3 ;Title
+
+
+ ****     SMALL SIGNAL BIAS SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     IS =    2     
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(    1)  -40.0000  (    2) 1920.0000  (    3) 1920.0000  (    4)  -40.0000  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    VD1         -4.000E-02
+    VD2          1.920E+00
+
+    TOTAL POWER DISSIPATION   0.00E+00  WATTS
+
+
+**** 10/10/14 09:37:32 ******* PSpice Lite (April 2011) ******* ID# 10813 ****
+
+ Name: Sean Basler  Problem:4  Experiment: 3 ;Title
+
+
+ ****     OPERATING POINT INFORMATION      TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     IS =    2     
+
+
+******************************************************************************
+
+
+
+
+
+
+**** CURRENT-CONTROLLED CURRENT SOURCES
+
+
+NAME         F1        
+I-SOURCE    -3.880E+00
+**** 10/10/14 09:37:32 ******* PSpice Lite (April 2011) ******* ID# 10813 ****
+
+ Name: Sean Basler  Problem:4  Experiment: 3 ;Title
+
+
+ ****     SMALL SIGNAL BIAS SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     IS =    1.5   
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(    1)  -30.0000  (    2) 1440.0000  (    3) 1440.0000  (    4)  -30.0000  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    VD1         -3.000E-02
+    VD2          1.440E+00
+
+    TOTAL POWER DISSIPATION   0.00E+00  WATTS
+
+
+**** 10/10/14 09:37:32 ******* PSpice Lite (April 2011) ******* ID# 10813 ****
+
+ Name: Sean Basler  Problem:4  Experiment: 3 ;Title
+
+
+ ****     OPERATING POINT INFORMATION      TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     IS =    1.5   
+
+
+******************************************************************************
+
+
+
+
+
+
+**** CURRENT-CONTROLLED CURRENT SOURCES
+
+
+NAME         F1        
+I-SOURCE    -2.910E+00
+**** 10/10/14 09:37:32 ******* PSpice Lite (April 2011) ******* ID# 10813 ****
+
+ Name: Sean Basler  Problem:4  Experiment: 3 ;Title
+
+
+ ****     SMALL SIGNAL BIAS SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     IS =    1     
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(    1)  -20.0000  (    2)  960.0000  (    3)  960.0000  (    4)  -20.0000  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    VD1         -2.000E-02
+    VD2          9.600E-01
+
+    TOTAL POWER DISSIPATION   0.00E+00  WATTS
+
+
+**** 10/10/14 09:37:32 ******* PSpice Lite (April 2011) ******* ID# 10813 ****
+
+ Name: Sean Basler  Problem:4  Experiment: 3 ;Title
+
+
+ ****     OPERATING POINT INFORMATION      TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     IS =    1     
+
+
+******************************************************************************
+
+
+
+
+
+
+**** CURRENT-CONTROLLED CURRENT SOURCES
+
+
+NAME         F1        
+I-SOURCE    -1.940E+00
+**** 10/10/14 09:37:32 ******* PSpice Lite (April 2011) ******* ID# 10813 ****
+
+ Name: Sean Basler  Problem:4  Experiment: 3 ;Title
+
+
+ ****     SMALL SIGNAL BIAS SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     IS =     .5   
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(    1)  -10.0000  (    2)  480.0000  (    3)  480.0000  (    4)  -10.0000  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    VD1         -1.000E-02
+    VD2          4.800E-01
+
+    TOTAL POWER DISSIPATION   0.00E+00  WATTS
+
+
+**** 10/10/14 09:37:32 ******* PSpice Lite (April 2011) ******* ID# 10813 ****
+
+ Name: Sean Basler  Problem:4  Experiment: 3 ;Title
+
+
+ ****     OPERATING POINT INFORMATION      TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     IS =     .5   
+
+
+******************************************************************************
+
+
+
+
+
+
+**** CURRENT-CONTROLLED CURRENT SOURCES
+
+
+NAME         F1        
+I-SOURCE    -9.700E-01
+**** 10/10/14 09:37:32 ******* PSpice Lite (April 2011) ******* ID# 10813 ****
+
+ Name: Sean Basler  Problem:4  Experiment: 3 ;Title
+
+
+ ****     SMALL SIGNAL BIAS SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     IS =    0     
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(    1)    0.0000  (    2)    0.0000  (    3)    0.0000  (    4)    0.0000  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    VD1          0.000E+00
+    VD2          0.000E+00
+
+    TOTAL POWER DISSIPATION   0.00E+00  WATTS
+
+
+**** 10/10/14 09:37:32 ******* PSpice Lite (April 2011) ******* ID# 10813 ****
+
+ Name: Sean Basler  Problem:4  Experiment: 3 ;Title
+
+
+ ****     OPERATING POINT INFORMATION      TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     IS =    0     
+
+
+******************************************************************************
+
+
+
+
+
+
+**** CURRENT-CONTROLLED CURRENT SOURCES
+
+
+NAME         F1        
+I-SOURCE     0.000E+00
+
+          JOB CONCLUDED
+
+**** 10/10/14 09:37:32 ******* PSpice Lite (April 2011) ******* ID# 10813 ****
+
+ Name: Sean Basler  Problem:4  Experiment: 3 ;Title
+
+
+ ****     JOB STATISTICS SUMMARY
+
+ ****     CURRENT STEP                     IS =    0     
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =        0.00
+

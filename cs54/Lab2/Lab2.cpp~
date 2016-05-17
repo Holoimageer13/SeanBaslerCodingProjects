@@ -1,0 +1,43 @@
+//-----------------------------------------------------------------------
+// Programmer: Sean Basler            Student ID: 12366509
+// Lab: #1, "Find Average"            Filename: Lab2.cpp
+// Due Date: 01/28/14                 Class: CSc54, Section c
+//------------------------------------------------------------------------
+// Program Description:
+// This program requests two inputs from user and calculates the average
+
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  //Declarations
+  float num1, num2, average;
+  
+  //Welcome message
+  cout << "Give me any two numbers, I can find the average of them. " << endl;
+  
+  //Prompt user for first number
+  cout << "Please enter the first number: " << endl;
+  
+  //read the keyboard input 
+  cin >> num1;
+  
+  //Prompt user for width
+  cout << "Please enter the second number: " << endl;
+  
+  //read the keyboard input
+  cin >>  num2;
+  
+  //Calculate area
+  average = (num1 * num2) / 2;
+  
+  //Output results
+  cout << "You entered : " << num1 << " and " << num2 << endl;
+  cout << "The average is : " << average << ".";
+  cout << endl;
+  
+  //end program
+  return 0;
+}

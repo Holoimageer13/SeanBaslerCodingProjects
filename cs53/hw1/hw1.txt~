@@ -1,0 +1,41 @@
+Programmer: Sean Basler	 Student ID: 12366509
+Homework 1: "Algorithm Assignment"  Filename: hw1.txt
+Due Date: 01/31/14  Class: CSc53, Section B
+
+Problem 1: 
+  1. Note what letter of the alphabet your word begins with.
+  2. Find the section of the book that begins with the same letter.
+  3. Go to the next letter in your word and compare it with the next letter
+     of each word in that section of the book. 
+  4. Once you find words that have the same first two letters compare the
+     next letter in your word to the corresponding letter in the words you
+     are checking. 
+  5. Repeat step 4 until all letters of your word match that of one of the
+     words on your list.
+
+Problem 2:
+  1. Get numbers A and B from the user.
+  2. Add B to itself to create a Sum and start a count of how many B's are
+     put in the Sum
+  3. Add B to Sum, if Sum is less than A and keep counting how many B's are
+     put into the Sum.
+  4. When Sum is greater than A, stop adding B's to sum and subtract 1 B
+     from both the Sum and the count of the number of B's. 
+  5. Then display then count of the number of B's to the user.
+Problem 3:
+  1. Get type of bunny to be hunted from Mom.
+  2. Check window to see if it is raining, if it is raining and the bunny to
+     be hunted is porcelain, inform Mom that a porcelain bunny cannot be
+     hunted today. 
+  3. Check thermometer to see what the temperature outside is.
+  4. If the temperature is above 0 and the bunny to be hunted is plastic,
+     then inform Mom that it cannot be hunted today.
+  5. If the temperature is above 20 and the bunny to be hunted is plastic or
+     chocolate, then inform Mom that it cannot be hunted today.
+  6. If the temperature is below 0 and the bunny to be hunted is porcelain
+     ,then inform Mom that it cannot be hunted today.
+  7. If the bunny to be bunny to be hunted is chocolate and it is raining,
+     take your shotgun. Otherwise you may use either the rifle or shotgun.
+  8. If your the bunny to be hunted is plastic use shotgun and if it is
+     porcelain use a rifle.
+  9. If coditions above are met, go hunting.

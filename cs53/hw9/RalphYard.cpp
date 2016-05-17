@@ -1,0 +1,47 @@
+//Programmer: Sean Basler   Class Section: B
+//Program: "RalphYard.cpp"  Date: 4/19/14
+//Desc: This drives the test of the structs
+#include "classmate.h"
+#include "schoolyard.h"
+
+int main()
+{
+  srand(time(NULL));//seeds the randome generator
+  
+  //object creation
+  classmate Ralph;//tests default
+  classmate Gary("Gary");//tests setting the name
+  schoolyard SpringfieldElementary(13,9);
+      
+  //initialization output tests
+  cout<<Ralph;
+  cout<<Gary;
+  cout<<SpringfieldElementary;
+  cout<<endl;
+  
+  //functionality tests
+  
+  //iq setting
+  Ralph.setIq();
+  cout<<"Now, the iq of the first one is: "<<Ralph.getIq()<<endl;
+  
+  //size getting
+  cout<<"The yard size is: "<<SpringfieldElementary.getyard()<<endl;
+  cout<<"The building size is: "<<SpringfieldElementary.getbuilding()<<endl;
+  
+  //move function
+  cout<<"They have both moved"<<endl;
+  Ralph.move();
+  Gary.move();
+  cout<<"Now, ";
+  cout<<Ralph<<" and ";
+  cout<<Gary<<endl;;
+  
+  //place function
+  cout<<"Now They will teleport."<<endl;
+  Ralph.place();
+  Gary.place();
+  cout<<"Now, "<<Ralph<<" and "<<Gary<<endl;
+  
+  return 0;
+}

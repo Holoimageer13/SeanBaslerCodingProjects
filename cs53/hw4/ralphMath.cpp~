@@ -1,0 +1,123 @@
+//File: ralphMath.cpp
+//Programmer: Sean Basler    Section: b 
+//Description: This program will perform various mathmatic functions.
+
+#include <iostream>
+using namespace std;
+
+int main()
+{ 
+  //Variable declarations
+  float numCalc;//this is the x the user wants in the equation
+  float rootCalc = 20.0, eCalc, expOfx;//results variables and the exponent variable
+  short menuChoice, counter = 0;//users menu option controls
+  long factCalc = 1;//factorial result variables
+  
+  //Opening screen
+  cout<<"Welcome to the Ralph Wiggum MathCOM Network!"<<endl;
+  cout<<"How may we service you today?: "<<endl<<endl;
+  
+  //Loop that runs the main program
+  do
+  {
+    //The menu style prompt
+    cout<<"\tMENU"<<endl;
+    cout<<"1. Enter a positive real number, x"<<endl;
+    cout<<"2. Factorial of x"<<endl;
+    cout<<"3. Fourth root of x"<<endl;
+    cout<<"4. X-ponential of x (exp(x))"<<endl;
+    cout<<"5. Quit"<<endl<<endl;
+    cout<<"\t\tEnter Selection: ";
+    cin>>menuChoice;//user input
+    cout<<endl<<endl;
+    
+    //This makes sure that you select option 1 the first time in the loop
+    while(menuChoice != 1 && counter == 0)
+    {
+      cout<<"Error, you have to enter an x to be used in calculation!"<<endl;
+      cout<<"Please enter 1: ";
+      cin>>menuChoice;
+    }
+    
+    //makes user selection 
+    switch(menuChoice)
+    {
+      case 1:
+      {
+        //prompt for x
+        cout<<"Enter your positive real number: ";
+        cin>>numCalc;
+        cout<<endl;
+        
+        //checks for positive real integer
+        while (numCalc < 0)
+        {
+          cout<<"Error, I said enter a POSITIVE REAL NUMBER: ";
+          cin>>numCalc;
+          cout<<endl;
+        }
+        cout<<"x is set to: "<<numCalc<<endl<<endl;
+        break;
+      }
+      case 2:
+      {
+        //calculates factorial
+        for(int i = 2;i <= static_cast<int>(numCalc);i++)
+        { 
+          factCalc = factCalc*i;
+        }
+        
+        //gives back result
+        cout<<numCalc<<"! is: "<<factCalc;
+        cout<<endl<<endl;
+        break;
+      }
+      case 3:
+      {  
+        //puts the equation through 5 more iterations 
+        for (int i = 1; i <= 6; i++)
+        {
+          rootCalc = ((3*rootCalc) +
+                     (numCalc/(rootCalc*rootCalc*rootCalc)))/4;                      
+        }
+        
+        //gives results
+        cout<<"The fourth root of "<<numCalc<<" is approximately: ";
+        cout<<rootCalc<<"."<<endl<<endl;
+        rootCalc = 20;
+        break;
+      }
+      case 4:
+      { 
+        //initializes calculation variables
+        factCalc = 1;
+        eCalc = 1 + numCalc/factCalc;
+        expOfx = numCalc;
+        
+        //Runs Calculation through 5 more iterations
+        for(int i = 2; i <= 6; i++)
+        {
+          factCalc = factCalc*i;
+          expOfx = expOfx*numCalc;
+          eCalc = eCalc + (expOfx/static_cast<float>(factCalc));  
+        }
+        
+        //gives results
+        cout<<"The exp(x) of "<<numCalc<<" is: "<<eCalc;
+        cout<<endl<<endl;
+        factCalc = 1;
+        break;
+      }
+      case 5:
+      {
+        break;
+      }
+      default:
+      {
+        cout<<"Error incorrect input"<<endl<<endl;
+      } 
+    }  
+    counter++;//counts each loop
+  } while(menuChoice != 5);    
+  return 0;//ends program
+}

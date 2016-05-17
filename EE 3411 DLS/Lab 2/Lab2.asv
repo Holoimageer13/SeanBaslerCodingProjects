@@ -1,0 +1,19 @@
+%Sean Basler
+%Lab2
+%*****************
+clc; clear all; close all;
+%% Section 1
+dt = 0.001;
+t = -0.1:dt:0.1;
+it1 = 2.4*cos(15*pi*t-0.8);
+it2 = 4.2*cos(15*pi*t-1.9);
+it3 = it1 + it2;
+
+figure(1);
+plot(t,it1,t,it2,t,it3);
+legend('it1','it2','it3');
+
+%% Section 2
+clc; clear all; close all;
+xt = 2*us(t+2.5)+2*ur(t+2)-10*us(t+1)-ur(t)-ur(t-1)...
+     +us(t-1)+0.5*ur(t-2.5)-0.5*ur(t-6.6);

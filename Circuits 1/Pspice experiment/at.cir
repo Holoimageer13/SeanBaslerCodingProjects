@@ -1,0 +1,5 @@
+Name: Sean Basler  Problem:(1 and 2)  Experiment: 3 ;Title
+V1 1 0 DC 2		 ;DC voltage source between nodes 1,0 and has a value of 2
+R1 1 0 10		 ;Resistance of value 10 between nodes 1,0
+.OP				 ;order
+.END			 ;end

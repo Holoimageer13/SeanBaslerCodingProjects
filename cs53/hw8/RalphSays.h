@@ -1,0 +1,79 @@
+// Programmer: Sean Basler    Date:04/09/14
+// File: RalphSays.h          Class Section: b
+// Purpose: This file declares the functions and  global variables 
+//          for RalphSays.cpp
+#ifndef RALPHSAYS_H
+#define RALPHSAYS_H
+#include <string>
+#include <cstring>
+#include <cstdlib>
+#include <ctime>
+#include <fstream>
+#include <iostream>
+using namespace std;
+//Global Constants
+const int OPTONE = 40;//percent chance of getting option one
+const int LONGUSE = 80;//percent chance for using the longest word
+const int NOUN2USE = 40;//percent chance whether the longest word is noun 2 
+const int MAXINPUT = 500;//max user input
+const int MAXDATA = 25;//max number of characters in words
+const int MAXPHRASE = 100;//max number of characters in phrases
+
+//function declarations
+
+//Description: Greets the user
+//        Pre: None
+//       Post: Outputs a greeting to the user
+void greet();
+
+//Description: Says goodbye to the user
+//        Pre: None
+//       Post: Outputs a farewell to the user
+void bye();
+
+//Description: Prompts the user to ask a question
+//        Pre: None
+//       Post: Outputs the prompt
+void ask(char question[]);
+
+//Description: Prompts the user to ask if they have more questions
+//        Pre: None
+//       Post: Outputs the prompt
+char again();
+
+//Description: Generates a random number between 1 and 100
+//        Pre: None
+//       Post: Returns a random integer between 1 and 100 
+int chance();
+
+//Description: Generates a random number between one and the upper bound
+//        Pre: None
+//       Post: Returns a random integer between one and the upper bound 
+int chance(const int up);
+
+//Description: Finds the largest word in a data file
+//        Pre: The file for istream must be open
+//       Post: Makes the largest word in a data file
+void longword(char word[], const char question[]);
+
+//Description: Finds the any word in a data file
+//        Pre: The file for istream must be open
+//       Post: Makes the any word in a data file
+void anyword(char word[], ifstream& fin, const int size);
+
+//Description: Tells you how many words are in the file
+//        Pre: The file for istream must be open
+//       Post: Returns the number of words in the file and then closes it
+int datasize(ifstream& fin);
+
+//Description: Tells you how many numbers are in the file
+//        Pre: The file for istream must be open
+//       Post: Returns the number of numbers in the file and then closes it
+int numlines(ifstream& fin);
+
+//Description: Finds the any phrase in a data file
+//        Pre: The file for istream must be open
+//       Post: Makes the any phrase in a data file
+void anyphrase(char phrase[], ifstream& fin, const int size, const bool isNoun);
+
+#endif

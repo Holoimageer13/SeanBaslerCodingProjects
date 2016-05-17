@@ -1,0 +1,272 @@
+
+*** These modified files were found in JOE when it aborted on Tue Apr  8 16:45:41 2014
+*** JOE was aborted because the terminal closed
+
+*** File 'lab11.cpp'
+//-----------------------------------------------------------------------
+// Programmer: Sean Basler           Student ID: 12366509 
+// Lab: 11, "NTCA"                   Filename: Lab10.cpp
+// Due Date: 04/08/14                Class: CSc54, Section C
+//------------------------------------------------------------------------
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+//global variables
+const unsigned int MAXLENGTH = 11;
+const unsigned int USERLENGTH = (MAXLENGTH * 2) - 1;
+const int LOWWORD = 65;//Lower bound of ASCII uppercase
+const int UPWORD = 90;//Upper bound of ASCII uppercase
+  
+//function declarations 
+
+//Description: Checks character to make sure it is a letter
+//        Pre: None
+//       Post: Returns whether or not a character is a letter
+bool isAlpha(const char word[]);
+
+//Description: Checks character to make sure it is a number
+//        Pre: None
+//       Post: Returns whether or not a character is a number
+bool isDigit(const char word[]);
+
+//Description: Checks character to make sure it is a letter
+//        Pre: All characters have to be letters
+//       Post: Returns whether or not a character is a letter
+char toUpper(const char word);
+
+//Description: Shows password characters as asterisks
+//        Pre: None
+//       Post: Shows password characters as asterisks
+void printPassword(const char password[]);
+
+//Description: Greets user
+//        Pre: None
+//       Post: Outputs greeting
+void greeting();
+
+//Description: Gives result and says farwell to the user 
+//        Pre: None
+//       Post: Outputs the result
+void Result(const char username[], const char firstname[], 
+            const char lastname[], const char password[]);
+
+//Description: Prompts for password and confirms it
+//        Pre: None
+//       Post: Creates password
+void getPassword(char password1[]);
+
+//Description: Checks user input to make sure they enter a letter
+//        Pre: None
+//       Post: Gets the users first and last name 
+void getName(char firstName[], char lastName[]);
+
+//Main program
+int main()
+{ 
+  //Null terminated array declarations 
+  char firstName[MAXLENGTH];
+  char lastName[MAXLENGTH];
+  char userName[USERLENGTH];
+  char passWord[MAXLENGTH];
+   
+  //function calls and application
+  greeting();
+  
+  //Name manipulation
+  getName(firstName, lastName);
+  strcpy(userName, firstName);
+  strcat(userName, lastName);  
+  for (unsigned int i = 0; userName[i] != '\0'; i++)
+  {
+    userName[i] = toUpper(userName[i]);
+  }
+  
+  //Password
+  getPassword(passWord);
+  Result(userName, firstName, lastName, passWord);
+  return 0;
+}
+
+//function definitions
+
+void getName(char firstName[], char lastName[])
+{
+  char isLetter1 = false, isLetter2 = false;
+  while (isLetter1 == false)
+  {
+    cout<<"Enter first name: ";
+    cin>>firstName;
+    isLetter1 = isAlpha(firstName);
+    if (isLetter1 == false)
+    {
+      cout<<"Name can contain characters in English alphabet only"<<endl;
+      cout<<endl;
+    }
+  }
+  while (isLetter2 == false)
+  {
+    cout<<"Enter last name : ";
+    cin>>lastName;
+    isLetter2 = isAlpha(lastName);
+    if (isLetter2 == false)
+    {
+      cout<<"Name can contain characters in English alphabet only"<<endl;
+      cout<<endl;
+    }
+  }
+  cout<<endl;
+  return;
+}
+
+void getPassword(char password1[])
+{
+  //local constants
+  const unsigned int MINLENGTH = 7;
+  
+  //local variables
+  char password2[MAXLENGTH];//comparison array 
+  bool isNumber = false;
+  int counter = 0;
+  
+  //Creates password
+  while (isNumber == false)
+  {
+    if (isNumber == false && counter > 0)
+    { 
+      cout<<"Your password must have at least one number in it."<<endl;
+      cout<<endl;
+    }
+    do
+    {
+      //checks password length
+      do
+      {
+        cout<<"Enter the password (7 -10 characters): ";
+        cin>>password1;
+        if (strlen(password1) > (MAXLENGTH-1) || strlen(password1) < MINLENGTH)
+        {  
+          cout<<endl;
+        }	
+      } while (strlen(password1) > (MAXLENGTH-1) || strlen(password1) < MINLENGTH);
+    
+      //Confirms password
+      cout<<"Confirm the password: ";
+      cin>>password2;
+      cout<<endl;
+	  isNumber = isDigit(password2);
+    } while (strcmp(password1, password2));
+    counter++; 
+  } 
+  return;  
+}
+
+void greeting()
+{
+  cout<<"Welcome! Please Enter your information to sign up"<<endl<<endl;
+}
+
+void Result(const char username[], const char firstname[], 
+            const char lastname[], const char password[])
+{
+  //local constants
+  const int BORDERLENGTH = 20;
+  
+  //functionality
+  cout<<"\t";
+  for (int i = 0; i < BORDERLENGTH; i++)
+  {
+    cout<<"*";
+  }
+  cout<<endl;
+  cout<<"Account information Summary:"<<endl;
+  cout<<"\tFirst Name\t\t:"<<firstname<<endl;
+  cout<<"\tLast Name\t\t:"<<lastname<<endl;
+  cout<<"\tuserName\t\t:"<<username<<endl;
+  cout<<"\tpassword\t\t:";
+  printPassword(password);
+  cout<<endl<<endl;
+  cout<<"Thanks!"<<endl;
+  return;
+}
+
+void printPassword(const char password[])
+{
+  for (unsigned int i = 0; password[i] != '\0'; i++)
+  {
+    cout<<"*";
+  }
+  return;
+}
+
+bool isAlpha(const char word[])
+{
+  //Local Constants
+  const int UPLITTLE = 122;//upperbound of ASCII lowercase
+  const int LOWLITTLE = 97;//lowerbound of ASCII lowercase  
+  
+  //Declares local variables
+  bool isTrue = true;
+  
+  //checks the entire character array
+  for (unsigned int i = 0; word[i] != '\0'; i++)
+  {
+    if ((word[i] >= LOWWORD && word[i] <= UPWORD)||
+        (word[i] >= LOWLITTLE && word[i] <= UPLITTLE ))
+    {
+	  isTrue = true;
+    }	
+  }
+  return isTrue;  
+}
+
+bool isDigit(const char word[])
+{
+  //Local Constants
+  const int LOWERBOUND = 48;//ASCII digits lower bound
+  const int UPPERBOUND = 57;//ASCII digits lower bound  
+  
+  //Declares local variables
+  bool isTrue = false;
+  
+  
+  //checks the entire character array
+  for (unsigned int i = 0; word[i] != '\0'; i++)
+  {
+    if (word[i] >= LOWERBOUND && word[i] <= UPPERBOUND)
+    {
+	  isTrue = true;
+    }	
+  }
+  return isTrue;  
+}
+
+char toUpper(const char word)
+{
+  
+  //local constants
+  const int DECREAMENT = 32;//difference in ASCII lower and upper cases
+
+  //Declares local variables
+  char upperWord;
+  
+  //converts the letter to uppercase if it's lowercase
+  if (word >= LOWWORD && word <= UPWORD)
+  {
+    upperWord = (word - DECREAMENT);
+  }
+  return upperWord;
+}
+
+*** File '(Unnamed)'
+lab11.cpp
+lab11.cpp
+lab11.cpp
+lab11.cpp
+lab11.cpp
+lab11.cpp
+lab11.cpp
+lab11.cpp
+lab11.cpp
+lab11.cpp
+lab11.cpp

@@ -1,0 +1,26 @@
+
+**** 10/08/14 15:53:41 ******* PSpice Lite (April 2011) ******* ID# 10813 ****
+
+ dependent example 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+Is 1 0 DC 
+----------$
+ERROR(ORPSIM-16492): Missing value
+R1 1 4 1000
+R2 2 3 1000
+R3 1 2 1000
+VD1 4 0 DC 0;ib finder
+VD2 3 0 DC 0;iy finder
+F1 2 0 VD1 97; dependent current source
+.STEP Is 2 0 0.5
+.OP
+.End
+

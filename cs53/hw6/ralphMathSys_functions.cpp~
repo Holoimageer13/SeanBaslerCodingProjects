@@ -1,0 +1,242 @@
+//Programmer: Sean Basler    Section: b
+//File: ralphMathSys.cpp
+//Description: This program defines the functions used in ralphMathSys
+#include <iostream>
+#include "ralphMathSys.h"
+using namespace std;
+
+void hello()
+{
+  cout<<"Welcome to the Ralph Wiggum MathCOM Network v. 2.0"<<endl;
+  cout<<"How may we help you today?"<<endl;
+  return;
+}
+
+void bye()
+{
+  cout<<"Thank you for using our expert services."<<endl;
+  cout<<"Have a good day!"<<endl;
+  return;
+}
+
+void menu()
+{
+  //Local variable declarations
+  float numCalc, rootCalc, exponentCalc;//these are the user's inputs
+  float solution;//calculation outputs
+  int menuChoice, loopCounter = 0;//these select the functions to be used 
+  bool isX = false;
+  
+  //Loop of the main program
+  do 
+  {
+    //Menu prompt
+    cout<<"\tMENU"<<endl;
+    cout<<"1. Enter a positive real number, x"<<endl;
+    cout<<"2. Factorial (of integer part of x)"<<endl;
+    cout<<"3. Nth root of x"<<endl;
+    cout<<"4. Power of x, x^n"<<endl;
+    cout<<"5. Exp(x)"<<endl;
+    cout<<"6. Sinh(x) (hyperbolic sine)"<<endl;
+    cout<<"7. Quit"<<endl<<endl;
+    cout<<"\t\tEnter Selection: ";
+    cin>>menuChoice;
+    cout<<endl<<endl;
+    
+    //makes sure the user enters a x value the first time through
+    menuChoice = menuCheck(menuChoice,loopCounter);    
+    switch (menuChoice)
+    {
+      case 1:
+      {
+        isX = true; 
+        numCalc = valSet(isX);
+        isX = false;
+        break;
+      }
+      case 2:
+      {
+        solution = factorial(numCalc);
+        result(solution, menuChoice);
+        break;
+      }
+      case 3:
+      {
+        rootCalc = valSet(isX);
+        solution = nRoot(numCalc, rootCalc);
+        result(solution, menuChoice);
+        break;
+      }
+      case 4:
+      { 
+        exponentCalc = valSet(isX);
+        solution = xPow(numCalc, exponentCalc);
+        result(solution, menuChoice);
+        break;
+      }
+      case 5:
+      {
+        solution = expX(numCalc);
+        result(solution, menuChoice);
+        break;
+      }
+      case 6:
+      {
+        solution = sinH(numCalc);
+        result(solution, menuChoice);
+        break;
+      }
+      case 7:
+      {
+        break;
+      }
+      default:
+      {
+        error();
+      }   
+    }
+    loopCounter++;
+  } while(menuChoice != 7);
+  return;
+}
+
+int menuCheck(int menuOption, int loopCount)
+{
+  while(menuOption != 1 && loopCount == 0)
+  {
+    cout<<"Error, you have to enter an x to be used in calculation!"<<endl;
+    cout<<"Please enter 1: ";
+    cin>>menuOption;  
+  }
+  return menuOption;
+}
+
+float valSet(bool isX)
+{
+  //Declares local variables
+  float numberCalc;
+  
+  //prompt for x
+  cout<<"Enter a positive real number(for ";
+  if (isX == true)
+    cout<<"x): ";
+  else
+    cout<<"n): ";
+  cin>>numberCalc;
+  cout<<endl;
+                          
+  //checks for positive real integer
+  while (numberCalc < 0)
+  {
+    cout<<"Error, I said enter a POSITIVE REAL NUMBER: ";
+    cin>>numberCalc;
+    cout<<endl;
+  }
+  
+  //tells what value x is set to and returns control to the calling function
+  if (isX == true)
+    cout<<"x";
+  else
+    cout<<"n";
+  cout<<" is set to: "<<numberCalc<<"."<<endl<<endl;                                                                                              
+  return numberCalc;
+}
+
+int factorial(const float numCalc)
+{
+  //Local variables
+  int factCalc;
+  
+  //Calculates factorial
+  factCalc = static_cast<int>(numCalc);
+  for(int i = 1;i < static_cast<int>(numCalc);i++)
+  {
+    factCalc =  factCalc*i;
+  }
+  
+  //checks to see if the answer is zero
+  if (numCalc = 0)
+    factCalc = 1;
+  return factCalc;
+}
+
+float nRoot(const float numCalc, const float root)
+{
+  //Declares local variables
+  float result, onelessRoot;
+  
+  //Calculations
+  result = numCalc;
+  onelessRoot = root-1;
+  for(int i = 1; i <= ROOT_COUNT; i++)
+  {
+    result = (onelessRoot*result +
+             (numCalc/xPow(result, onelessRoot)))/root; 
+  }
+  return result;
+}
+
+float xPow(const float numCalc, float exponent)
+{
+  //Local variables
+  float result;
+  
+  //Exponent Calculation
+  result = numCalc;
+  for (int i = 1; i < exponent; i++)
+  {
+    result = numCalc * result;
+  }
+  return result;
+}
+
+float expX(const float numCalc)
+{
+  //initialize calculation variables
+  float eCalc = 1;  
+  
+  //Runs Calculation through more iterations
+   for(int i = 1; i <= EXP_COUNT; i++)
+   {
+      eCalc = eCalc + (xPow(numCalc, i)
+                       /static_cast<float>(factorial(i))); 
+   } 
+   return eCalc;
+}
+
+float sinH(const float numCalc)
+{  
+  //local variables
+  int incrementor = 1;
+  float result;
+  
+  //function calculation
+  result = numCalc;
+  for(int i = 1; i < SIN_COUNT; i++)
+  {
+    incrementor = incrementor + 2;
+    result = result + (xPow(numCalc, incrementor)
+                       /static_cast<float>(factorial(incrementor)));
+  }   
+  return result;
+}
+
+void error()
+{
+  cout<<"Error incorrect input"<<endl<<endl;
+  return;
+}
+
+void result(const float finalResult, const int theCase)
+{
+  if (theCase == 2)
+    cout<<"The factorial of x is: "<<finalResult<<endl<<endl;
+  else if (theCase == 3)
+    cout<<"That root of x is: "<<finalResult<<endl<<endl;
+  else if (theCase == 4)
+    cout<<"That exponent of x is: "<<finalResult<<endl<<endl;
+  else if (theCase == 5)
+    cout<<"Exp(x) is: "<<finalResult<<endl<<endl;
+  else
+    cout<<"Sinh(x) is: "<<finalResult<<endl<<endl;
+}

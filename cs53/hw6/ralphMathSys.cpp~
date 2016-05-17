@@ -1,0 +1,21 @@
+//Programmer: Sean Basler    Section: b
+//File: ralphMathSys.cpp
+//Description: This program performs various math funtions for the user
+#include <iostream>
+#include "ralphMathSys.h"
+using namespace std;
+
+int main()
+{
+  //local variable declarations
+  float numCalc, rootCalc, exponentCalc;//these are the user's inputs
+  int menuChoice, loopCounter = 0;//these select the functions to be used
+  bool isX = false;
+  //function Calls
+  hello();
+  menu();                                       
+  bye();
+  
+  //Ends program 
+  return 0;
+}

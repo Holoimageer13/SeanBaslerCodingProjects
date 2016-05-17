@@ -1,0 +1,76 @@
+
+**** 10/10/14 09:36:42 ******* PSpice Lite (April 2011) ******* ID# 10813 ****
+
+ Name: Sean Basler  Problem:(1 and 2)  Experiment: 3 ;Title
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+V1 1 0 DC 2              ;DC voltage source between nodes 1,0 and has a value of 2
+R1 1 0 10                ;Resistance of value 10 between nodes 1,0
+.OP                              ;order
+.END                     ;end
+
+**** 10/10/14 09:36:42 ******* PSpice Lite (April 2011) ******* ID# 10813 ****
+
+ Name: Sean Basler  Problem:(1 and 2)  Experiment: 3 ;Title
+
+
+ ****     SMALL SIGNAL BIAS SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(    1)    2.0000  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V1          -2.000E-01
+
+    TOTAL POWER DISSIPATION   4.00E-01  WATTS
+
+
+**** 10/10/14 09:36:42 ******* PSpice Lite (April 2011) ******* ID# 10813 ****
+
+ Name: Sean Basler  Problem:(1 and 2)  Experiment: 3 ;Title
+
+
+ ****     OPERATING POINT INFORMATION      TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+
+
+          JOB CONCLUDED
+
+**** 10/10/14 09:36:42 ******* PSpice Lite (April 2011) ******* ID# 10813 ****
+
+ Name: Sean Basler  Problem:(1 and 2)  Experiment: 3 ;Title
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =         .02
+

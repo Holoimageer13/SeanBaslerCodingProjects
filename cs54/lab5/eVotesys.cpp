@@ -1,0 +1,77 @@
+//File: eVotesys.cpp
+//Programmer: Sean Basler   Lab Section: c 
+//Purpose: this program will tally the votes for the election
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  //Constant Declarations
+  const int PRIORI = 9; //number of voters
+  
+  //Variable Declarations
+  char vote;//Casts persons vote
+  float perIron, perSilver, perIam, perWaste;//used for percent calc.
+  int numIron = 0, numSilver = 0, numIam = 0, numWaste = 0;//counters
+         
+  //Greeting and Selection
+  cout<<"Welcome to E-Voting system."<<endl<<endl;
+  cout<<"Here are the canidates: "<<endl;
+  cout<<"A: Iron Man"<<endl;
+  cout<<"B: Silver Man"<<endl;
+  cout<<"C: I am the Man"<<endl<<endl;
+  
+  //main loop that runs the voting process
+  for (int i = 1; i <= PRIORI; i++)
+  {
+    //prompt for your vote
+    cout<<"Who do you vote for?: ";
+    cin>>vote; 
+      
+    //switch statement that processes your vote
+    switch(vote)
+    {
+      case 'A':
+      {
+        cout<<"You voted for Iron Man."<<endl<<endl;
+        numIron++;
+        break;
+      }
+      case 'B':
+      {
+        cout<<"You voted for Silver Man."<<endl<<endl;
+        numSilver++;
+        break;
+      }
+      case 'C':
+      {
+        cout<<"You voted for I am the Man."<<endl<<endl;
+        numIam++;
+        break;
+      }
+      default:
+      {
+        cout<<"You just wasted your vote."<<endl<<endl;
+        numWaste++;
+      }
+    }
+  }
+  
+  //Calculation for percents
+  perIron = (static_cast <float>(numIron)/PRIORI)*100;
+  perSilver = (static_cast <float>(numSilver)/PRIORI)*100;
+  perIam = (static_cast <float>(numIam)/PRIORI)*100;
+  perWaste = (static_cast <float>(numWaste)/PRIORI)*100; 
+          
+  //Summary
+  cout<<"Here is the voting summary:"<<endl;
+  cout<<"Canidates        Votes      Percentage"<<endl;
+  cout<<"Iron Man         "<<numIron<<"            "<<perIron<<endl;
+  cout<<"Silver Man       "<<numSilver<<"            "<<perSilver<<endl;
+  cout<<"I am the Man     "<<numIam<<"            "<<perIam<<endl;
+  cout<<"Wasted Votes     "<<numWaste<<"            "<<perWaste<<endl<<endl;
+  cout<<"Thanks for using the E-Voting system."<<endl;
+  cout<<"Have a Nice Day!"<<endl;
+  return 0;                              
+}
